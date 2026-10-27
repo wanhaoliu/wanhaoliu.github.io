@@ -1,0 +1,447 @@
+---
+---
+
+/*
+ *    Minimal Mistakes Jekyll Theme
+ *
+ *  - Michael Rose
+ *  - mademistakes.com
+ *  - https://twitter.com/mmistakes
+ *
+*/
+
+@import "vendor/breakpoint/breakpoint"; // media query mixins
+@import "variables";
+@import "mixins";
+@import "vendor/susy/susy";
+
+@import "reset";
+@import "base";
+
+@import "utilities";
+@import "animations";
+@import "tables";
+@import "buttons";
+@import "notices";
+@import "masthead";
+@import "navigation";
+@import "footer";
+@import "syntax";
+
+@import "forms";
+
+@import "page";
+@import "archive";
+@import "sidebar";
+
+@import "vendor/font-awesome/fontawesome";
+@import "vendor/font-awesome/solid";
+@import "vendor/font-awesome/brands";
+@import "vendor/magnific-popup/magnific-popup";
+@import "print";
+
+.paper-badge {
+  background-color: #1565c0;
+  color: white;
+  font-size: 0.85em;
+  padding: 2px 0.3rem;
+  border-radius: 5px;
+}
+
+.paper-venue {
+  color: #1565c0;
+}
+
+.paper-prebadge {
+  background-color: #2aa198;
+  color: white;
+  font-size: 0.85em;
+  padding: 2px 0.3rem;
+  border-radius: 5px;
+}
+
+.paper-box {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-bottom: 1px #efefef solid;
+  padding: 2em 0 2em 0;
+
+  .paper-box-image {
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    order: 2;
+
+    img {
+      max-width: 400px;
+      box-shadow: 3px 3px 6px #888;
+      object-fit: cover;
+    }
+  }
+
+  .paper-box-text {
+    max-width: 100%;
+    order: 1;
+  }
+
+  @include breakpoint($medium) {
+    .paper-box-image {
+      justify-content: left;
+      min-width: 200px;
+      max-width: 40%;
+      order: 1;
+    }
+
+    .paper-box-text {
+      justify-content: left;
+      padding-left: 2em;
+      max-width: 60%;
+      order: 2;
+    }
+  }
+}
+
+$scroll_offset: 2em;
+h1:before, .anchor:before {
+  content: '';
+  display: block;
+  position: relative;
+  width: 0;
+  height: $scroll_offset;
+  margin-top: -$scroll_offset;
+}
+
+.badge {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: absolute;
+  margin-top: .5em;
+  margin-left: -.5em;
+  color: white;
+  background-color: #00369f;
+  font-size: .8em;
+}
+
+/* These additions are scoped so the original typography, navigation,
+   sidebar, and section styling stay unchanged. */
+.about-copy,
+.collaboration-line {
+  line-height: 1.65;
+}
+
+.org-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.22rem;
+  padding: 0.03rem 0.34rem 0.03rem 0.18rem;
+  border-radius: 4px;
+  background: #f3f3f3;
+  font-weight: bold;
+  text-decoration: none !important;
+  vertical-align: -0.14rem;
+
+  img {
+    width: 1.12rem;
+    height: 1.12rem;
+    margin: 0;
+    border-radius: 50%;
+    box-shadow: none;
+    object-fit: contain;
+  }
+
+  &--ustc { color: #1b4f9c !important; background: #eef2f8; }
+  &--ouc { color: #1d5fa8 !important; background: #eef3fa; }
+  &--shlab { color: #276a72 !important; background: #eef7f7; }
+  &--tencent { padding-left: 0.34rem; color: #0052d9 !important; background: #edf3fd; }
+}
+
+.news-list {
+  margin: 0.15rem 0 1.5rem;
+}
+
+.news-item {
+  display: grid;
+  grid-template-columns: 5.25rem minmax(0, 1fr);
+  gap: 0.7rem;
+  align-items: start;
+  padding: 0.34rem 0;
+
+  time {
+    display: inline-block;
+    width: fit-content;
+    padding: 0.18rem 0.46rem;
+    border-radius: 5px;
+    background: #eaf2ff;
+    color: #1a73e8;
+    font-family: Menlo, Consolas, monospace;
+    font-size: 0.86em;
+    font-weight: bold;
+    line-height: 1.45;
+    white-space: nowrap;
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.55;
+  }
+}
+
+.publication-legend {
+  margin-top: -0.25rem;
+}
+
+.publication-group {
+  margin: 1.6em 0 0.2em;
+  padding-left: 0.6rem;
+  border-left: 4px solid #1565c0;
+  color: #333;
+  font-size: 1.05em;
+  line-height: 1.35;
+}
+
+.paper-badge--preprint { background-color: #2aa198; }
+
+.other-publications {
+  margin: 0.6rem 0 1.5rem;
+  padding-left: 1.25rem;
+
+  li {
+    margin-bottom: 0.7rem;
+    line-height: 1.5;
+  }
+
+  .paper-venue {
+    font-style: italic;
+  }
+}
+
+.other-pub-link {
+  font-size: 0.9em;
+  white-space: nowrap;
+
+  &.btn-bib { background: none; }
+}
+
+.publication-item {
+  padding: 1.15em 0;
+  align-items: center;
+
+  .paper-box-image {
+    order: 1;
+
+    > a {
+      position: relative;
+      display: block;
+      width: 100%;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      max-width: none;
+      aspect-ratio: 16 / 9;
+      border: 1px solid #e5e5e5;
+      border-radius: 5px;
+      background: #fff;
+      box-shadow: 3px 3px 6px #aaa;
+      object-fit: contain;
+    }
+  }
+
+  .paper-badge {
+    position: absolute;
+    z-index: 2;
+    top: 0.5rem;
+    left: -0.4rem;
+    min-width: 5.6rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 0 4px 4px 0;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+
+  .paper-box-text {
+    order: 2;
+  }
+
+  h3 {
+    margin: 0 0 0.45rem;
+    font-size: 1.08em;
+    line-height: 1.4;
+
+    a { text-decoration: underline; }
+  }
+
+  @include breakpoint($medium) {
+    .paper-box-image {
+      max-width: 40%;
+      order: 1;
+    }
+
+    .paper-box-text {
+      max-width: 60%;
+      padding-left: 2em;
+      order: 2;
+    }
+  }
+}
+
+.paper-authors {
+  margin: 0 0 0.5rem;
+  line-height: 1.5;
+}
+
+.paper-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.25rem 0;
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.7rem;
+  padding: 0.16rem 0.52rem;
+  border-radius: 4px;
+  font-size: 0.85em;
+  font-weight: bold;
+  line-height: 1.4;
+  text-decoration: none !important;
+}
+
+.btn-paper { background: #e8f0fe; color: #1a73e8 !important; }
+.btn-page { background: #f3e8fd; color: #7b1fa2 !important; }
+.btn-hf { background: #fff0e5; color: #a95700 !important; }
+.btn-scholar { background: #e6f4ea; color: #188038 !important; }
+.btn-code { background: #e8eaed; color: #3c4043 !important; }
+.btn-bib { background: #e8eaf6; color: #3f51b5 !important; }
+.btn-scholar .ai { margin-right: 0.25rem; }
+
+.paper-contribution {
+  margin: 0.6rem 0 0;
+  padding-left: 1.25rem;
+  line-height: 1.5;
+
+  li { margin: 0; }
+}
+
+.bib-tooltip {
+  position: absolute;
+  z-index: 1100;
+  display: none;
+  max-width: min(520px, calc(100vw - 2rem));
+  padding: 0.7rem 0.85rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.17);
+  color: #333;
+  font-family: Menlo, Consolas, monospace;
+  font-size: 0.72rem;
+  line-height: 1.45;
+  pointer-events: none;
+  white-space: pre-wrap;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0.8rem 0 1.5rem;
+}
+
+.project-card {
+  overflow: hidden;
+  border: 1px solid #e2e2e2;
+  border-radius: 7px;
+  background: #fff;
+
+  > img {
+    display: block;
+    width: 100%;
+    height: 135px;
+    object-fit: cover;
+  }
+
+  > div { padding: 0.8rem; }
+
+  h3 {
+    margin: 0.15rem 0 0.35rem;
+    font-size: 1em;
+  }
+
+  p {
+    margin: 0 0 0.45rem;
+    font-size: 0.9em;
+    line-height: 1.45;
+  }
+}
+
+.project-card--repository {
+  > img {
+    background: #f3f4f6;
+    object-fit: contain;
+  }
+}
+
+.project-label {
+  color: #666;
+  font-size: 0.76em;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.project-award {
+  margin-bottom: 0 !important;
+  color: #8a5b12;
+  font-weight: bold;
+}
+
+.project-stars {
+  margin-bottom: 0 !important;
+}
+
+.project-stars__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #8a5b12 !important;
+  font-weight: bold;
+  text-decoration: none !important;
+
+  &:hover { text-decoration: underline !important; }
+}
+
+@media (max-width: 48em) {
+  .news-item {
+    grid-template-columns: 4.8rem minmax(0, 1fr);
+    gap: 0.5rem;
+
+    time { font-size: 0.78em; }
+  }
+
+  .publication-item {
+    display: flex;
+    gap: 0;
+
+    .paper-box-image {
+      width: 100%;
+      margin-bottom: 1rem;
+      order: 1;
+    }
+
+    .paper-box-text {
+      width: 100%;
+      order: 2;
+    }
+  }
+
+  .project-grid { grid-template-columns: 1fr; }
+
+  .org-chip { white-space: nowrap; }
+}
